@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jwt">
+<head>
+  <meta charset="UTF-8">
+  <title>JWT Code Along</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+</head>
+<body ng-controller="jwtController">
+  <button ng-click="login()">Login</button>
+
+  <button ng-click="protected()">Check Protected Route</button>
+
+  {{view.response}}
+</body>
+</html>
