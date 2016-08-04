@@ -1,6 +1,6 @@
 # JWT Assessment
 ---
-This is a simple exercise to show are comfortable using JWTs.
+This is a simple exercise to show you are comfortable using JWTs.
 
 This basic site has a login route and a protected route.
 The login route will return a JWT to the user, while the protected route
