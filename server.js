@@ -13,14 +13,10 @@ app.get('/login',function (req,res,next) {
 });
 
 app.use(function (req,res,next) {
-  if (req.headers.authorization){
-    if (jwt.verify(req.headers.authorization, process.env.SECRET, {algorithm: 'HS512'})){
+  if (req.headers.authorization && jwt.verify(req.headers.authorization, process.env.SECRET, {algorithm: 'HS512'})){
       next()
-    } else {
-      res.status(401).send('No.')
-    }
   } else {
-    res.status(401).send('No.')
+    res.status(401).send('Get outta here!')
   }
 });
 
