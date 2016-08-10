@@ -4,7 +4,15 @@ app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('jwtInterceptor');
 })
 .service('jwtInterceptor', function jwtInterceptor(){
-  //TODO: Attach the token to every request.
+  //Attach the token to every request.
+  return {
+    request: function(config){
+      if (localStorage.jwt){
+        config.headers.Authorization = 'Bearer ' + localStorage.jwt;
+      }
+      return config;
+    }
+  }
 })
 
 app.controller('jwtController',['$scope','$http', function($scope,$http) {
@@ -13,7 +21,8 @@ app.controller('jwtController',['$scope','$http', function($scope,$http) {
 
   $scope.login = function() {
     $http.get('/login').then(function (res) {
-      //TODO:Store token in localstorage
+      //Store token in localstorage
+      $scope.view.response = res.data.token;
     });
   };
 
