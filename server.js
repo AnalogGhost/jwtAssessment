@@ -9,12 +9,16 @@ app.use(bearerToken());
 app.use(express.static('public'));
 
 app.get('/login',function (req,res,next) {
-  //TODO: Return a token
+  var token = jwt.sign({ user: 'signed in'}, 'shhhhhh')
+  res.json({
+    token: token
+  })
 });
 
 app.use(function (req,res,next) {
-  //TODO: Implement app level middleware to protect the /protected route
-  //TODO: Verify the token before allowing access to /protected
+    if(jwt.verify(req.headers.user, 'shhhhhh')){
+      next();
+    }
 });
 
 app.get('/protected',function (req,res,next) {
