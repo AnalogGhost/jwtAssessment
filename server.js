@@ -10,10 +10,23 @@ app.use(express.static('public'));
 
 app.get('/login',function (req,res,next) {
   //TODO: Return a token
+  var user = {
+    name: "Jory",
+    cohort: "g[23]",
+    isAdmin: false
+  }
+  res.json({token:jwt.sign(user,process.env.SECRET)});
 });
 
 app.use(function (req,res,next) {
   //TODO: Implement app level middleware to protect the /protected route
+  jwt.verify(req.token, process.env.SECRET, function (err,decoded) {
+    if (!err) {
+      next();
+    } else {
+      res.status(400).send('Bad Request');
+    }
+  });
   //TODO: Verify the token before allowing access to /protected
 });
 
