@@ -13,7 +13,7 @@ Most of the site is complete you just have a few tasks - which have been
 designated with TODOs in the source.
 
 ## server.js
-- The TODO under the login route.  Create the token and return it in the body of the response.
+- The thing to do under the login route.  Create the token and return it in the body of the response.
 - App level middleware to protect the routes declared afterwards.  Verify the token and allow the user to proceed.
 
 ## public/js/app.js
