@@ -9,8 +9,7 @@ app.use(bearerToken());
 app.use(express.static('public'));
 
 app.get('/login',function (req,res,next) {
-  //
-  //TODO: Return a token
+  // Return a token
   var user = {
     name: 'rob',
     id: '0U812',
@@ -20,9 +19,8 @@ app.get('/login',function (req,res,next) {
 });
 
 app.use(function (req,res,next) {
-  //TODO: Implement app level middleware to protect the /protected route
-  //TODO: Verify the token before allowing access to /protected
-  // console.log('REQ token', req.token);
+  // Implement app level middleware to protect the /protected route
+  // Verify the token before allowing access to /protected
 
   jwt.verify(req.token, process.env.SECRET, function(err, decoded) {
     if (!err) {
